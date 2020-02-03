@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Book your holiday
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="openModal()">Departure</ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item (click)="openModal()">Destination</ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>Check In</ion-label>
+      <ion-datetime
+        displayFormat="MM DD YY"
+        placeholder="Select Date"
+      ></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>Check Out</ion-label>
+      <ion-toggle></ion-toggle>
+      <ion-datetime
+        displayFormat="MM DD YY"
+        placeholder="Select Date"
+      ></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-select placeholder="Adults">
+      <ion-select-option value="f">1</ion-select-option>
+      <ion-select-option value="m">2</ion-select-option>
+    </ion-select>
+  </ion-list>
+</ion-content>

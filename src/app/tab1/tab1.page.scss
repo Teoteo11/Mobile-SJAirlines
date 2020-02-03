@@ -1,0 +1,30 @@
+ion-text {
+  color: #1698fa;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icon1,
+.icon2,
+.icon3,
+.icon4 {
+  width: 30px;
+  height: 30px;
+}
+.icon1 {
+  color: rgb(27, 189, 27);
+}
+.icon2 {
+  color: rgb(0, 183, 255);
+}
+.icon3 {
+  color: #c13584;
+}
+.icon4 {
+  color: rgb(0, 110, 212);
+}
