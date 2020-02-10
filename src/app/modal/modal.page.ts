@@ -22,4 +22,8 @@ export class ModalPage implements OnInit {
   async closeModal() {
     await this.modalController.dismiss();
   }
+  selectAirport(airport: Airport): void {
+    this.modalController.dismiss(airport);
+    console.log(airport);
+  }
 }

@@ -11,6 +11,8 @@
 
 <ion-content>
   <ion-list *ngFor="let airport of airports">
-    <ion-item>{{airport.city}} - {{airport.name}} </ion-item>
+    <ion-item (click)="selectAirport(airport.name)"
+      >{{airport.city}} - {{airport.name}}</ion-item
+    >
   </ion-list>
 </ion-content>
