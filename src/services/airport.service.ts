@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AirportsService {
   constructor(private httpClient: HttpClient) {}
-  apiURL = `http://localhost:3003/airports`;
+  apiURL = `http://localhost:3004/airports`;
 
   public getAirports() {
     return this.httpClient.get<Airport[]>(`${this.apiURL}`).toPromise();

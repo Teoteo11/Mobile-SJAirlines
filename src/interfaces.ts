@@ -38,7 +38,7 @@ export interface Company {
 }
 
 export interface Airport {
-  id?: string;
+  _id?: string;
   city: string;
   country: string;
   name: string;

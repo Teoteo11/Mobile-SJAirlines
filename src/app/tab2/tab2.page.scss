@@ -1,1 +1,14 @@
-
+.button-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.btn-color {
+  background-color: #1698fa;
+  border-radius: 6px;
+}
+.card {
+  padding: 5px;
+  border: 2px solid #1698fa;
+}

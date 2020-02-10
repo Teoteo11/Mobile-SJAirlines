@@ -1,41 +1,59 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Book your holiday
+      Bookings
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card class="card">
+    <ion-list>
+      <ion-item (click)="openModal()"
+        >{{airportSelectedDeparture?.city}} {{ airportSelectedDeparture?.name ||
+        'Departure' }}</ion-item
+      >
+    </ion-list>
+  </ion-card>
+  <ion-card class="card">
+    <ion-list>
+      <ion-item (click)="openModal2()"
+        >{{airportSelectedDestination?.city}} {{
+        airportSelectedDestination?.name || 'Destination' }}</ion-item
+      >
+    </ion-list>
+  </ion-card>
+  <ion-card class="card">
+    <ion-list>
+      <ion-item>
+        <ion-label>Check In</ion-label>
+        <ion-datetime
+          [(ngModel)]="checkIn"
+          displayFormat="MM DD YY"
+          placeholder="Select Date"
+        ></ion-datetime>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card class="card">
+    <ion-list>
+      <ion-item>
+        <ion-label>Check Out</ion-label>
+
+        <!-- <ion-toggle></ion-toggle> -->
+        <ion-datetime
+          [(ngModel)]="checkout"
+          displayFormat="MM DD YY"
+          placeholder="Select Date"
+        ></ion-datetime>
+      </ion-item>
+    </ion-list>
+  </ion-card>
   <ion-list>
-    <ion-item (click)="openModal()">Departure</ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item (click)="openModal()">Destination</ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item>
-      <ion-label>Check In</ion-label>
-      <ion-datetime
-        displayFormat="MM DD YY"
-        placeholder="Select Date"
-      ></ion-datetime>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item>
-      <ion-label>Check Out</ion-label>
-      <ion-toggle></ion-toggle>
-      <ion-datetime
-        displayFormat="MM DD YY"
-        placeholder="Select Date"
-      ></ion-datetime>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-select placeholder="Adults">
-      <ion-select-option value="f">1</ion-select-option>
-      <ion-select-option value="m">2</ion-select-option>
-    </ion-select>
+    <div class="button-check">
+      <ion-button class="btn-color" (click)="launchTab3Page()"
+        >Check the flights</ion-button
+      >
+    </div>
   </ion-list>
 </ion-content>

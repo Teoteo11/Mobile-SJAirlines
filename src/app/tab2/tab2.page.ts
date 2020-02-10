@@ -1,8 +1,8 @@
+import { Tab3Page } from "./../tab3/tab3.page";
 import { ModalPage } from "./../modal/modal.page";
 import { Component } from "@angular/core";
-import { AirportsService } from "src/services/airport.service";
 import { Airport } from "src/interfaces";
-import { ModalController } from "@ionic/angular";
+import { ModalController, NavController } from "@ionic/angular";
 
 @Component({
   selector: "app-tab2",
@@ -10,12 +10,51 @@ import { ModalController } from "@ionic/angular";
   styleUrls: ["tab2.page.scss"]
 })
 export class Tab2Page {
-  constructor(private modalController: ModalController) {}
+  airportSelectedDeparture: Airport;
+  airportSelectedDestination: Airport;
+  checkIn: Date;
+  checkout: Date | string;
+
+  constructor(
+    public navCtrl: NavController,
+    private modalController: ModalController
+  ) {}
 
   async openModal() {
     const myModal = await this.modalController.create({
       component: ModalPage
     });
-    return await myModal.present();
+    await myModal.present();
+    const { data } = await myModal.onWillDismiss();
+    if (data) {
+      this.airportSelectedDeparture = data.airport as Airport;
+      // console.log(this.airportSelectedDeparture);
+    }
+  }
+
+  async openModal2() {
+    const myModal = await this.modalController.create({
+      component: ModalPage
+    });
+    await myModal.present();
+    const { data } = await myModal.onWillDismiss();
+    if (data) {
+      this.airportSelectedDestination = data.airport as Airport;
+      // console.log(this.airportSelectedDestination);
+    }
+  }
+
+  async launchTab3Page() {
+    console.log(this.checkIn);
+    await this.navCtrl.navigateForward(
+      `/tabs/tab3/${this.airportSelectedDeparture._id}/${
+        this.airportSelectedDestination._id
+      }/${this.checkIn}
+      ${
+        Boolean(this.checkout) && this.checkout !== ""
+          ? `?checkOut=${this.checkout}`
+          : ""
+      }`
+    );
   }
 }

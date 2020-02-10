@@ -3,7 +3,7 @@
     <ion-title>Choose your departure</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
+        <!-- <ion-icon slot="icon-only" name="close"></ion-icon> -->
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -11,8 +11,8 @@
 
 <ion-content>
   <ion-list *ngFor="let airport of airports">
-    <ion-item (click)="selectAirport(airport.name)"
-      >{{airport.city}} - {{airport.name}}</ion-item
+    <ion-item (click)="selectAirport(airport)"
+      >{{airport.city}}-{{airport.name}}</ion-item
     >
   </ion-list>
 </ion-content>

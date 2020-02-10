@@ -10,6 +10,7 @@ import { Airport } from "src/interfaces";
 })
 export class ModalPage implements OnInit {
   airports: Airport[];
+
   constructor(
     private modalController: ModalController,
     private airportsService: AirportsService
@@ -19,11 +20,14 @@ export class ModalPage implements OnInit {
     this.airports = await this.airportsService.getAirports();
     console.log("this.airports:", this.airports);
   }
+  // async ngOnInit() {
+  //   this.airports = await this.airportsService.getAirports();
+  //   console.log("this.airports:", this.airports);
+  // }
   async closeModal() {
     await this.modalController.dismiss();
   }
   selectAirport(airport: Airport): void {
-    this.modalController.dismiss(airport);
-    console.log(airport);
+    this.modalController.dismiss({ airport });
   }
 }

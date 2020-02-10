@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Flights
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <p *ngFor="let flight of flights">
+    {{flight?.departure}} -- {{flight?.destination}}
+  </p>
+</ion-content>
