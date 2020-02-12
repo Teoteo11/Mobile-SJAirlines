@@ -50,11 +50,11 @@ export class Tab2Page {
       this.airportSelectedDestination._id
     }?${
       Boolean(this.checkIn) && this.checkIn.toString() !== ""
-        ? `checkIn=${new Date(this.checkIn).toISOString()}`
+        ? `checkIn=${new Date(this.checkIn).getTime()}`
         : ""
     }${
       Boolean(this.checkout) && this.checkout.toString() !== ""
-        ? `&checkOut=${new Date(this.checkout).toISOString()}`
+        ? `&checkOut=${new Date(this.checkout).getTime()}`
         : ""
     }`;
     await this.navCtrl.navigateForward(url);
