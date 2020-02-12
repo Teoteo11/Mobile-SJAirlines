@@ -14,7 +14,7 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {}
 
-  backtoLogin() {
-    this.navCtrl.navigateBack("/login");
+  async backtoLogin() {
+    await this.navCtrl.navigateBack("/login");
   }
 }

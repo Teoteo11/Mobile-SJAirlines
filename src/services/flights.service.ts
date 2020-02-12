@@ -9,17 +9,22 @@ export class FlightsService {
   constructor(private httpClient: HttpClient) {}
   apiURL = `http://localhost:3004/flights`;
 
-  public getFlights(params) {
-    Object.keys(params).forEach(
-      key => params[key] === undefined && delete params[key]
+  public getFlights(data) {
+    Object.keys(data.params).forEach(
+      key => data.params[key] === undefined && delete data.params[key]
     );
-    console.log("params:", params);
-    const queryString = Object.keys(params)
-      .map(key => key + "=" + params[key])
+    Object.keys(data.query).forEach(
+      key => data.query[key] === undefined && delete data.query[key]
+    );
+    console.log("params:", data);
+    const queryString = Object.keys(data.query)
+      .map(key => key + "=" + data.query[key])
       .join("&");
     console.log(queryString);
     return this.httpClient
-      .get<Flight[]>(`${this.apiURL}/${params.departure}/1?${queryString}`)
+      .get<Flight[]>(
+        `${this.apiURL}/${data.params.departure}/${data.params.destination}/1?${queryString}`
+      )
       .toPromise();
   }
 }

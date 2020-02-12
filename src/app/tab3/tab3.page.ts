@@ -17,15 +17,16 @@ export class Tab3Page implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const params = {
-      ...this.activatedRoute.snapshot.params,
-      ...this.activatedRoute.snapshot.queryParams
+    const data = {
+      params: { ...this.activatedRoute.snapshot.params },
+      query: { ...this.activatedRoute.snapshot.queryParams }
     };
-    if (!params.checkOut) {
-      delete params.checkOut;
+    if (!data.params.checkOut) {
+      delete data.params.checkOut;
     }
+    console.log(data);
     try {
-      this.flights = await this.flightsService.getFlights(params);
+      this.flights = await this.flightsService.getFlights(data);
       return;
     } catch (err) {
       console.log("Err: ", err);

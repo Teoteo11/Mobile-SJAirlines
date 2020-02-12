@@ -3,11 +3,9 @@
   font-weight: 500;
   margin-bottom: 40px;
 }
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
+.title {
+  text-align: center;
+  color: orange;
 }
 
 .listLogin {
@@ -17,6 +15,8 @@
 .buttonLogin {
   margin-top: 20px;
   border-radius: 4px;
+  background-color: #1698fa;
+  color: #ffffff;
 }
 
 .input-credentials {

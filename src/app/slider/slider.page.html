@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>slider</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- con il continue -> mi porto alle tabs -->
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <h1>Slide 1</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <p>Slide 3</p>
+      <ion-button (click)="goTabs()" routerDirection="root">CLick</ion-button>>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

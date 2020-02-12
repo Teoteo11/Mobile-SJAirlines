@@ -46,15 +46,17 @@ export class Tab2Page {
 
   async launchTab3Page() {
     console.log(this.checkIn);
-    await this.navCtrl.navigateForward(
-      `/tabs/tab3/${this.airportSelectedDeparture._id}/${
-        this.airportSelectedDestination._id
-      }/${this.checkIn}
-      ${
-        Boolean(this.checkout) && this.checkout !== ""
-          ? `?checkOut=${this.checkout}`
-          : ""
-      }`
-    );
+    const url = `/tabs/tab3/${this.airportSelectedDeparture._id}/${
+      this.airportSelectedDestination._id
+    }?${
+      Boolean(this.checkIn) && this.checkIn.toString() !== ""
+        ? `checkIn=${new Date(this.checkIn).toISOString()}`
+        : ""
+    }${
+      Boolean(this.checkout) && this.checkout.toString() !== ""
+        ? `&checkOut=${new Date(this.checkout).toISOString()}`
+        : ""
+    }`;
+    await this.navCtrl.navigateForward(url);
   }
 }
