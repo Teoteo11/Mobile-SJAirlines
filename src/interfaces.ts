@@ -14,6 +14,7 @@ export interface User {
   username: string;
   name: string;
   surname: string;
+  password: string;
   tickets: Array<Ticket>;
 }
 export interface Flight {

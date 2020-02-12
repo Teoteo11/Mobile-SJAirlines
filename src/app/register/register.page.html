@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Register</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="backtoLogin()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="mail"></ion-icon>
+      <ion-input
+        class="input-credentials"
+        placeholder="Insert email"
+        [(ngModel)]="email"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person"></ion-icon>
+      <ion-input
+        class="input-credentials"
+        placeholder="Insert username"
+        [(ngModel)]="username"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock"></ion-icon>
+      <ion-input
+        class="input-credentials"
+        type="password"
+        placeholder="Insert password"
+        [(ngModel)]="password"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock"></ion-icon>
+      <ion-input
+        class="input-credentials"
+        type="password"
+        placeholder="Confirm password"
+      ></ion-input>
+    </ion-item>
+    <div class="btn-signIn">
+      <ion-button>Sign In</ion-button>
+    </div>
+  </ion-list>
+</ion-content>
