@@ -3,19 +3,19 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   // prima di tutte
-  {
-    path: "",
-    loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
-  },
   // {
   //   path: "",
-  //   loadChildren: () =>
-  //     import("./slider/slider.module").then(m => m.SliderPageModule)
-  // },
-  // {
-  //   path: "tabs",
   //   loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
   // },
+  {
+    path: "",
+    loadChildren: () =>
+      import("./slider/slider.module").then(m => m.SliderPageModule)
+  },
+  {
+    path: "tabs",
+    loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
+  },
   {
     path: "modal",
     loadChildren: () =>

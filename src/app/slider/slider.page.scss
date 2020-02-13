@@ -1,0 +1,58 @@
+.slide1 {
+  height: 100vh;
+  background-image: linear-gradient(
+    to top,
+    #f39c12,
+    #ff7266,
+    #ff68b3,
+    #bc81ed,
+    #1698fa
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slide1,
+.slide2,
+.slide3 h1 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.airplane {
+  width: 200px;
+  height: 150px;
+}
+
+.slide2 {
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    #f39c12,
+    #ff7266,
+    #ff68b3,
+    #bc81ed,
+    #1698fa
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.slide3 {
+  height: 100vh;
+  background-image: linear-gradient(
+    to left top,
+    #f39c12,
+    #ff7266,
+    #ff68b3,
+    #bc81ed,
+    #1698fa
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

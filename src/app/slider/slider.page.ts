@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class SliderPage implements OnInit {
   slideOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 400
   };
 
@@ -17,6 +17,6 @@ export class SliderPage implements OnInit {
   ngOnInit() {}
 
   async goTabs() {
-    await this.navCtrl.navigateForward("/tabs/tab1");
+    await this.navCtrl.navigateForward("tabs/tab1");
   }
 }
