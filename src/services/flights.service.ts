@@ -8,6 +8,7 @@ import { Flight } from "src/interfaces";
 export class FlightsService {
   constructor(private httpClient: HttpClient) {}
   apiURL = `http://localhost:3004/flights`;
+  // apiURL = `https://api.sjairlines.tk/flights`;
 
   public getFlights(data) {
     Object.keys(data.params).forEach(

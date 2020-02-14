@@ -1,13 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="title">
       Flights
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-text *ngFor="let flight of flights">
-    {{flight?.departure}} -- {{flight?.destination}}
-  </ion-text>
+  <ion-card *ngFor="let flight of flights">
+    <ion-card-content>
+      <ion-text>
+        <h3 class="text-flight">
+          <ion-icon name="arrow-round-up"></ion-icon>Departure:
+        </h3>
+        {{flight?.departure}}
+        <h3 class="text-flight">
+          <ion-icon name="arrow-round-down"></ion-icon>Destination:
+        </h3>
+        {{flight?.destination}}
+        <h3 class="text-flight">
+          <ion-icon name="alarm" md="md-alarm"></ion-icon>Duration:
+        </h3>
+        {{flight?.duration}}min
+        <h3 class="text-flight"><ion-icon name="logo-usd"></ion-icon>Price:</h3>
+        {{flight?.price}}$
+      </ion-text>
+      <ion-button (click)="launchDetail()">Click</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

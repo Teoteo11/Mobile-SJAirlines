@@ -8,7 +8,8 @@ import { Observable } from "rxjs";
 })
 export class LoginService {
   constructor(private httpClient: HttpClient) {}
-  apiURL = `http://localhost:3004/login`;
+  // apiURL = `http://localhost:3004/login`;
+  apiURL = `https://api.sjairlines.tk/login`;
 
   public controlUser(email: string, password: string): Observable<any> {
     return this.httpClient.post(this.apiURL, {
