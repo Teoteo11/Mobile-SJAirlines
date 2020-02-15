@@ -24,8 +24,15 @@
         {{flight?.duration}}min
         <h3 class="text-flight"><ion-icon name="logo-usd"></ion-icon>Price:</h3>
         {{flight?.price}}$
+        <h3 class="text-flight">
+          <ion-icon name="logo-usd"></ion-icon>IdAirplane:
+        </h3>
+        {{flight?.idAirplane}}
       </ion-text>
     </ion-card-content>
-    <ion-button (click)="launchDetail()">Show details</ion-button>
+    <ion-button
+      (click)="launchDetail(flight.departure,flight.destination,flight.duration,flight.price,flight.idAirplane)"
+      >Show details</ion-button
+    >
   </ion-card>
 </ion-content>

@@ -50,7 +50,16 @@ export class Tab3Page implements OnInit {
     }
   }
 
-  async launchDetail() {
-    await this.navCtrl.navigateForward("/details");
+  async launchDetail(
+    departure: string,
+    destination: string,
+    duration: number,
+    price: number,
+    idAirplane: string
+  ) {
+    //details:idFlight
+    await this.navCtrl.navigateForward(
+      `/details/${departure}/${destination}/${duration}/${price}/${idAirplane}`
+    );
   }
 }
