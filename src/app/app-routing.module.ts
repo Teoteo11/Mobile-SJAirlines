@@ -2,16 +2,11 @@ import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
-  // prima di tutte
-  // {
-  //   path: "",
-  //   loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
-  // },
   {
     path: "",
-    loadChildren: () =>
-      import("./slider/slider.module").then(m => m.SliderPageModule)
+    loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
   },
+
   {
     path: "tabs",
     loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
@@ -35,6 +30,11 @@ const routes: Routes = [
     path: "details/:departure/:destination/:duration/:price/:idAirplane",
     loadChildren: () =>
       import("./tab3/details/details.module").then(m => m.DetailsPageModule)
+  },
+  {
+    path: "slider",
+    loadChildren: () =>
+      import("./slider/slider.module").then(m => m.SliderPageModule)
   }
 ];
 @NgModule({
