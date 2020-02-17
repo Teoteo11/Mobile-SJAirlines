@@ -11,6 +11,7 @@ export interface Airplane {
 }
 export interface User {
   _id?: string;
+  email: string;
   username: string;
   name: string;
   surname: string;
