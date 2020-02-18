@@ -8,9 +8,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./login.page.scss"]
 })
 export class LoginPage {
-
-  private email: string;
-  private password: string;
+  email: string;
+  password: string;
 
   constructor(
     public navCtrl: NavController,

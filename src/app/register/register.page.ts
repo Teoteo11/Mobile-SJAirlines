@@ -1,4 +1,4 @@
-import { NavController } from "@ionic/angular";
+import { NavController, ToastController } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/services/auth.service";
 import { User } from "./../../interfaces";
@@ -19,21 +19,33 @@ export class RegisterPage implements OnInit {
     email: "",
     tickets: []
   };
-  constructor(private navCtrl: NavController, private auth: AuthService) {}
+  constructor(
+    private navCtrl: NavController,
+    private auth: AuthService,
+    private toastController: ToastController
+  ) {}
 
   ngOnInit() {}
 
   async backtoLogin() {
-    await this.navCtrl.navigateBack("/login");
+    await this.navCtrl.navigateBack("/tabs/login");
   }
   registerUser() {
     this.auth.registerUser(this.registerUserData).subscribe(
       res => {
         console.log(res);
         localStorage.setItem("token", res.response);
-        this.navCtrl.navigateForward("/login");
+        this.presentToast("Registration confirmed");
+        this.navCtrl.navigateForward("/tabs/login");
       },
       err => console.log(err)
     );
+  }
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
   }
 }
