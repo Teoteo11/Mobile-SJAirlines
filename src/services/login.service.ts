@@ -9,6 +9,7 @@ import { User } from 'src/interfaces';
 })
 export class LoginService {
 
+  private userID: string;
   // private url = environment.apiUrl + '/login';
   private url = 'http://localhost:3004/login';
 
@@ -25,21 +26,13 @@ export class LoginService {
 
   login(email: string, password: string) {
     return this.http.post(this.url, { email, password }, this.httpOptions)
-      .subscribe((res: HttpResponse<any>) => {
-        
-        // FIXME:
-        let user: User = res.body;
+      .subscribe(
+        (res) => {
 
-        console.log(user.name);
-        localStorage.setItem('username', user.name);
-        
-        // 2. faccio l'output del nome
-
+        this.presentToast('Login avvenuto con successo!');
         localStorage.setItem('token', res.headers.get('Authorization'));
-        this.navController.navigateForward('/dashboard');
-        //console.log(res.headers.get('Authorization'));
+        console.log(res.headers.get('Authorization'));
     }, (err: Error) => {
-      // console.log('Errore nel login. Inserisci username o password');
       this.presentToast('Login non avvenuto');
     });
   }
