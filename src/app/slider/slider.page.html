@@ -2,20 +2,32 @@
   <!-- con il continue -> mi porto alle tabs -->
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide class="slide1">
-      <h1>Benvenuto</h1>
-      <h1>Welcome</h1>
-      <h1>Willkommen</h1>
+      <ion-card class="card-slide">
+        <img
+          src="https://img.icons8.com/bubbles/300/000000/around-the-globe.png"
+        />
+        <h2 class="h2-slide1">Welcome to SJAirlines</h2>
+        <p class="p-slide1">With us your dreams come to life</p>
+      </ion-card>
     </ion-slide>
     <ion-slide class="slide2">
-      <h1>Do you like travelling?</h1>
+      <ion-card class="card-slide">
+        <img src="https://img.icons8.com/bubbles/300/000000/suitcase.png" />
+        <h2 class="h2-slide2">Do you like travelling?</h2>
+        <p class="p-slide2">
+          ..who doesn't like to travel ?!
+        </p>
+      </ion-card>
     </ion-slide>
     <ion-slide class="slide3">
-      <img class="airplane" src="../../assets/air.png" alt="ciao" />
-      <h1>What are you waiting for?</h1>
-      <h1>Enjoy!</h1>
-      <ion-button fill="clear" (click)="goTabs()"
-        >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
-      ></ion-button>
+      <ion-card class="card-slide">
+        <img src="https://img.icons8.com/bubbles/300/000000/airport.png" />
+        <h2 class="h2-slide3">What are you waiting for?</h2>
+        <p class="p-slide3">Enjoy!</p>
+        <ion-button fill="clear" (click)="goTabs()"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-card>
     </ion-slide>
   </ion-slides>
 </ion-content>

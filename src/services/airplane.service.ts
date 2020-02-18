@@ -7,7 +7,8 @@ import { Airport, Airplane } from "src/interfaces";
 })
 export class AirplaneService {
   constructor(private httpClient: HttpClient) {}
-  apiURL = `http://localhost:3004/airplanes`;
+  // apiURL = `http://localhost:3004/airplanes`;
+  apiURL = `https://api.sjairlines.tk/airplanes`;
 
   public getAirplaneById(id: string) {
     return this.httpClient

@@ -13,6 +13,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 const config: SocketIoConfig = {
   url: `http://localhost:4000`,
+  // url: `https://api.sjairlines.tk`,
   options: {}
 };
 

@@ -14,18 +14,6 @@
   flex-direction: column;
 }
 
-.slide1,
-.slide2,
-.slide3 h1 {
-  font-size: 20px;
-  color: #fff;
-}
-
-.airplane {
-  width: 200px;
-  height: 150px;
-}
-
 .slide2 {
   height: 100vh;
   background-image: linear-gradient(
@@ -41,6 +29,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .slide3 {
   height: 100vh;
   background-image: linear-gradient(
@@ -55,4 +44,23 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.card-slide {
+  height: 90%;
+  width: 90%;
+  background-color: #fff;
+}
+
+.p-slide1,
+.p-slide2,
+.p-slide3 {
+  color: grey;
+}
+
+.h2-slide1,
+.h2-slide2,
+.h2-slide3 {
+  font-size: 20px;
+  color: #1698fa;
 }
