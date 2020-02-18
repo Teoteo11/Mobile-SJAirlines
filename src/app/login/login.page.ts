@@ -1,27 +1,27 @@
 import { LoginService } from "./../../services/login.service";
-import { RegisterPage } from "./../register/register.page";
 import { NavController } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.page.html",
   styleUrls: ["./login.page.scss"]
 })
-export class LoginPage implements OnInit {
-  username: string;
-  password: string;
+export class LoginPage {
+
+  private email: string;
+  private password: string;
+
   constructor(
     public navCtrl: NavController,
     private loginService: LoginService
   ) {}
-  ngOnInit() {}
 
-  login() {
-    console.log("Username:", this.username);
-    console.log("Password:", this.password);
-    // const res = this.loginService.controlUser(this.username, this.password);
+  async login() {
+    this.loginService.login(this.email, this.password);
+
+    // console.log("Username:", this.email);
+    // console.log("Password:", this.password);
     // console.log(res);
   }
 
