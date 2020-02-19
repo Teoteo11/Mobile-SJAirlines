@@ -1,9 +1,47 @@
-.title {
+.title-login {
+  color: #fff;
   text-align: center;
-  color: orange;
+  background-color: orange;
+  border-radius: 6px;
+  transform: translateY(22px);
+  width: 130px;
+  position: relative;
+  left: 85px;
+  z-index: 1;
 }
+
 .btn-signIn {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.item-name,
+.item-surname,
+.item-email,
+.item-username,
+.item-password,
+.item-passwordConfirm {
+  border-radius: 8px;
+  width: 250px;
+  margin-bottom: 6px;
+}
+
+.card-register {
+  height: 400px;
+  background-color: #1698fa;
+  margin-top: 10px;
+}
+
+.div-item {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.buttonRegister {
+  margin-top: 10px;
+  border-radius: 4px;
 }

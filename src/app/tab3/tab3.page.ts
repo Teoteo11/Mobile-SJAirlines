@@ -24,9 +24,10 @@ export class Tab3Page implements OnInit {
       params: { ...this.activatedRoute.snapshot.params },
       query: { ...this.activatedRoute.snapshot.queryParams }
     };
-    if (!data.params.checkOut) {
-      delete data.params.checkOut;
-    }
+    // !data.
+    // if (data.params.checkOut) {
+    //   delete data.params.checkOut;
+    // }
     console.log("Data: ", data);
     try {
       // const airport = await this.airportService.getAirportById(

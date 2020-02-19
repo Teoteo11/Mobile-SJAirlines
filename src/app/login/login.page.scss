@@ -3,20 +3,46 @@
   font-weight: 500;
   margin-bottom: 40px;
 }
-.title {
+.title-login {
+  color: #fff;
   text-align: center;
-  color: orange;
+  background-color: orange;
+  border-radius: 6px;
+  transform: translateY(22px);
+  width: 130px;
+  position: relative;
+  left: 85px;
+  z-index: 1;
 }
 
-.listLogin {
-  margin-top: 60px;
+.card-login {
+  height: 400px;
+  background-color: #1698fa;
+  margin-top: 10px;
+}
+
+.div-item {
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item-email {
+  border-radius: 8px;
+  width: 250px;
+}
+
+.item-pass {
+  margin-top: 12px;
+  border-radius: 8px;
+  width: 250px;
 }
 
 .buttonLogin {
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 4px;
-  background-color: #1698fa;
-  color: #ffffff;
 }
 
 .input-credentials {
@@ -26,7 +52,7 @@
 .buttons {
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }

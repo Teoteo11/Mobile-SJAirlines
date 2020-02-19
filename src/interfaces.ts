@@ -18,6 +18,12 @@ export interface User {
   password: string;
   tickets: Array<Ticket>;
 }
+
+export interface LoginUs {
+  email: string;
+  password: string;
+}
+
 export interface Flight {
   _id?: string;
   departure: string;

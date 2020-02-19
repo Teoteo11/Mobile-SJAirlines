@@ -1,3 +1,4 @@
+import { LoginUs } from "./../interfaces";
 import { Injectable } from "@angular/core";
 import { User } from "../interfaces";
 import { HttpClient } from "@angular/common/http";
@@ -19,4 +20,8 @@ export class AuthService {
   public getToken() {
     return localStorage.getItem("token");
   }
+
+  // public loginUser(loginUser: LoginUs) {
+  //   return this.httpClient.post<any>(`${this.authUrl}/login`, loginUser);
+  // }
 }
