@@ -20,21 +20,20 @@ export class Tab3Page implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const data = {
-      params: { ...this.activatedRoute.snapshot.params },
-      query: { ...this.activatedRoute.snapshot.queryParams }
+    const query = {
+      ...this.activatedRoute.snapshot.queryParams
     };
     // !data.
     // if (data.params.checkOut) {
     //   delete data.params.checkOut;
     // }
-    console.log("Data: ", data);
+    console.log("Data: ", query);
     try {
       // const airport = await this.airportService.getAirportById(
       //   data.params.departure
       // );
       // console.log("Aeroporto:", airport.name);
-      (await this.flightsService.getFlights(data)).forEach(async flight => {
+      (await this.flightsService.getFlights(query)).forEach(async flight => {
         const [departure, destination] = await Promise.all([
           this.airportService.getAirportById(flight.departure),
           this.airportService.getAirportById(flight.destination)
@@ -45,6 +44,26 @@ export class Tab3Page implements OnInit {
         ];
         this.flights.push(flight);
       });
+      if (query.checkOut) {
+        if (this.activatedRoute.snapshot.queryParams.departure) {
+          query.destination = this.activatedRoute.snapshot.queryParams.departure;
+        }
+        if (this.activatedRoute.snapshot.queryParams.destination) {
+          query.departure = this.activatedRoute.snapshot.queryParams.destination;
+        }
+        query.checkIn = query.checkOut;
+        (await this.flightsService.getFlights(query)).forEach(async flight => {
+          const [departure, destination] = await Promise.all([
+            this.airportService.getAirportById(flight.departure),
+            this.airportService.getAirportById(flight.destination)
+          ]);
+          [flight.departure, flight.destination] = [
+            departure.name,
+            destination.name
+          ];
+          this.flights.push(flight);
+        });
+      }
       return;
     } catch (err) {
       console.log("Err: ", err);

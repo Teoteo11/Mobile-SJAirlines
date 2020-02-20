@@ -7,25 +7,20 @@ import { Flight } from "src/interfaces";
 })
 export class FlightsService {
   constructor(private httpClient: HttpClient) {}
-  // apiURL = `http://localhost:3004/flights`;
-  apiURL = `https://api.sjairlines.tk/flights`;
+  apiURL = `http://localhost:3004/flights`;
+  //apiURL = `https://api.sjairlines.tk/flights`;
 
-  public getFlights(data) {
-    Object.keys(data.params).forEach(
-      key => data.params[key] === undefined && delete data.params[key]
+  public getFlights(query) {
+    Object.keys(query).forEach(
+      key => query[key] === undefined && delete query[key]
     );
-    Object.keys(data.query).forEach(
-      key => data.query[key] === undefined && delete data.query[key]
-    );
-    console.log("params:", data);
-    const queryString = Object.keys(data.query)
-      .map(key => key + "=" + data.query[key])
+    console.log("params:", query);
+    const queryString = Object.keys(query)
+      .map(key => key + "=" + query[key])
       .join("&");
     console.log(queryString);
     return this.httpClient
-      .get<Flight[]>(
-        `${this.apiURL}/${data.params.departure}/${data.params.destination}/1?${queryString}`
-      )
+      .get<Flight[]>(`${this.apiURL}/1?${queryString}`)
       .toPromise();
   }
 }
