@@ -1,16 +1,17 @@
 import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { NavController, ToastController } from "@ionic/angular";
 
-import { User, LoginUs } from "src/interfaces";
+import { LoginUs } from "src/interfaces";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: "root"
 })
 export class LoginService {
+
   private userID: string;
-  private url = "https://api.sjairlines.tk/login";
-  // private url = "http://localhost:3004/login";
+  private url = `${environment.SERVER_URL}login`;
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -22,8 +23,7 @@ export class LoginService {
 
   constructor(
     private http: HttpClient,
-    private navController: NavController,
-    private toastController: ToastController
+    private navController: NavController
   ) {}
 
   public loginUser(loginUser: LoginUs) {
@@ -33,13 +33,5 @@ export class LoginService {
   logout() {
     localStorage.removeItem("token");
     this.navController.navigateBack(["/"]);
-  }
-
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 2000
-    });
-    toast.present();
   }
 }

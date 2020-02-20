@@ -1,6 +1,6 @@
 import { LoginService } from "./../../services/login.service";
 import { NavController, ToastController } from "@ionic/angular";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { LoginUs } from "src/interfaces";
 
 @Component({
@@ -56,7 +56,9 @@ export class LoginPage {
   async loginToast(message: string) {
     const toast = await this.toast.create({
       message,
-      duration: 2000
+      duration: 1000,
+      keyboardClose: true,
+      position: "middle"
     });
     toast.present();
   }
