@@ -3,11 +3,14 @@ import { HttpHeaders, HttpClient, HttpResponse } from "@angular/common/http";
 import { NavController, ToastController } from "@ionic/angular";
 
 import { User, LoginUs } from "src/interfaces";
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: "root"
 })
 export class LoginService {
+  token: string;
+  decoded: any;
   private userID: string;
   private url = "https://api.sjairlines.tk/login";
   // private url = "http://localhost:3004/login";

@@ -1,9 +1,11 @@
+import { TicketService } from "./../../services/ticket.service";
 import { AirportsService } from "src/services/airport.service";
-import { Flight, Airport } from "src/interfaces";
+import { Flight, Airport, User, Ticket } from "src/interfaces";
 import { FlightsService } from "./../../services/flights.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavController } from "@ionic/angular";
+import { AuthService } from "src/services/auth.service";
 
 @Component({
   selector: "app-tab3",
@@ -12,9 +14,13 @@ import { NavController } from "@ionic/angular";
 })
 export class Tab3Page implements OnInit {
   flights: Array<Flight> = [];
+  flight: Flight;
+  idUser: User;
   constructor(
     private activatedRoute: ActivatedRoute,
+    private ticketService: TicketService,
     private flightsService: FlightsService,
+    private authService: AuthService,
     private airportService: AirportsService,
     private navCtrl: NavController
   ) {}
@@ -77,9 +83,17 @@ export class Tab3Page implements OnInit {
     price: number,
     idAirplane: string
   ) {
-    //details:idFlight
+    // details:idFlight
     await this.navCtrl.navigateForward(
       `/details/${departure}/${destination}/${duration}/${price}/${idAirplane}`
     );
+  }
+
+  buyTicket(flight: Flight) {
+    if (this.ticketService.createTicket(flight)) {
+      console.log("L'ho preso", flight);
+    } else {
+      console.log("E' successo  qualcosa");
+    }
   }
 }

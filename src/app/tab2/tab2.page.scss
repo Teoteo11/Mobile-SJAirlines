@@ -1,3 +1,11 @@
+ion-content {
+  --ion-background-color: #1698fa;
+}
+ion-list,
+ion-item {
+  --ion-background-color: #fff;
+}
+
 .button-check {
   display: flex;
   justify-content: center;
@@ -9,6 +17,7 @@
   border-radius: 6px;
 }
 .card {
+  background-color: #fff;
   padding: 10px;
   border: 2px solid #1698fa;
 }

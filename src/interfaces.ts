@@ -1,7 +1,7 @@
 export interface Ticket {
   _id?: string;
   idCompany: number;
-  idFlight: number;
+  idFlight: string;
   isChecked: boolean;
 }
 export interface Airplane {

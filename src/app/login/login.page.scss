@@ -1,28 +1,31 @@
+ion-content {
+  --ion-background-color: #1698fa;
+}
+
+.title-login {
+  text-align: center;
+  color: orange;
+}
+
+.icon {
+  color: #fff;
+}
+
 .text-login {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 40px;
 }
-.title-login {
-  color: #fff;
-  text-align: center;
-  background-color: orange;
-  border-radius: 6px;
-  transform: translateY(22px);
-  width: 130px;
-  position: relative;
-  left: 85px;
-  z-index: 1;
-}
 
 .card-login {
-  height: 400px;
-  background-color: #1698fa;
-  margin-top: 10px;
+  margin-top: 16px;
+  height: 380px;
+  background-color: #fff;
+  border-radius: 6px;
 }
 
 .div-item {
-  margin-top: 90px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -11,6 +11,10 @@
     <ion-card-content>
       <ion-text>
         <h3 class="text-flight">
+          <ion-icon name="arrow-round-up"></ion-icon>ID:
+        </h3>
+        {{flight._id}}
+        <h3 class="text-flight">
           <ion-icon name="arrow-round-up"></ion-icon>Departure:
         </h3>
         {{flight?.departure}}
@@ -34,5 +38,6 @@
       (click)="launchDetail(flight.departure,flight.destination,flight.duration,flight.price,flight.idAirplane)"
       >Show details</ion-button
     >
+    <ion-button (click)="buyTicket(flight)">Buy</ion-button>
   </ion-card>
 </ion-content>
