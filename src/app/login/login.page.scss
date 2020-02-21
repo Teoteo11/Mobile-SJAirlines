@@ -59,3 +59,21 @@ ion-content {
   justify-content: center;
   margin-top: 10px;
 }
+
+.text-dashboard {
+  text-align: center;
+  color: orange;
+}
+
+.card-dashboard-ticket {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: #fff;
+  color: orange;
+  height: 120px;
+  width: 120px;
+}

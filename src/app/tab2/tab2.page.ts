@@ -1,8 +1,12 @@
-import { Tab3Page } from "./../tab3/tab3.page";
 import { ModalPage } from "./../modal/modal.page";
 import { Component } from "@angular/core";
 import { Airport } from "src/interfaces";
-import { ModalController, NavController } from "@ionic/angular";
+import {
+  ModalController,
+  NavController,
+  ToastController
+} from "@ionic/angular";
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-tab2",
@@ -14,10 +18,12 @@ export class Tab2Page {
   airportSelectedDestination: Airport;
   checkIn: Date;
   checkout: Date | string;
+  public disabledWayBack = false;
 
   constructor(
     public navCtrl: NavController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private toastController: ToastController
   ) {}
 
   async openModal() {
@@ -45,24 +51,40 @@ export class Tab2Page {
   }
 
   async launchTab3Page() {
-    console.log(this.checkIn);
-    const url = `/tabs/tab3?${
-      Boolean(this.airportSelectedDeparture._id)
-        ? `departure=${this.airportSelectedDeparture._id}`
-        : ""
-    }${
-      Boolean(this.airportSelectedDestination._id)
-        ? `&destination=${this.airportSelectedDestination._id}`
-        : ""
-    }${
-      Boolean(this.checkIn) && this.checkIn.toString() !== ""
-        ? `&checkIn=${new Date(this.checkIn).getTime()}`
-        : ""
-    }${
-      Boolean(this.checkout) && this.checkout.toString() !== ""
-        ? `&checkOut=${new Date(this.checkout).getTime()}`
-        : ""
-    }`;
-    await this.navCtrl.navigateForward(url);
+    if (
+      this.airportSelectedDeparture != null &&
+      this.airportSelectedDestination != null &&
+      (this.checkIn != null || this.checkout != null)
+    ) {
+      console.log(this.checkIn);
+      const url = `/tabs/tab3?${
+        Boolean(this.airportSelectedDeparture._id)
+          ? `departure=${this.airportSelectedDeparture._id}`
+          : ""
+      }${
+        Boolean(this.airportSelectedDestination._id)
+          ? `&destination=${this.airportSelectedDestination._id}`
+          : ""
+      }${
+        Boolean(this.checkIn) && this.checkIn.toString() !== ""
+          ? `&checkIn=${new Date(this.checkIn).getTime()}`
+          : ""
+      }${
+        Boolean(this.checkout) && this.checkout.toString() !== ""
+          ? `&checkOut=${new Date(this.checkout).getTime()}`
+          : ""
+      }`;
+      await this.navCtrl.navigateForward(url);
+    } else {
+      this.presentToast("Insert values in the fields");
+    }
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

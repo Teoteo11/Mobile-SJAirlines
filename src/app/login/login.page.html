@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="isAuthenticated">
   <ion-toolbar>
     <ion-title class="title-login">
       Login
@@ -6,22 +6,65 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-header *ngIf="!isAuthenticated">
+  <ion-toolbar>
+    <ion-title class="title-login">
+      Dashboard
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="isAuthenticated">
   <ion-card class="card-login">
     <div class="div-item">
       <ion-item class="item-email">
         <ion-icon class="icon" name="person"></ion-icon>
-        <ion-input class="input-credentials" placeholder="Insert email" [(ngModel)]="loginUserData.email"></ion-input>
+        <ion-input
+          class="input-credentials"
+          placeholder="Insert email"
+          [(ngModel)]="loginUserData.email"
+        ></ion-input>
       </ion-item>
       <ion-item class="item-pass">
         <ion-icon class="icon" name="lock"></ion-icon>
-        <ion-input class="input-credentials" type="password" placeholder="Insert password" [(ngModel)]="loginUserData.password"></ion-input>
+        <ion-input
+          class="input-credentials"
+          type="password"
+          placeholder="Insert password"
+          [(ngModel)]="loginUserData.password"
+        ></ion-input>
       </ion-item>
     </div>
     <div class="buttons">
-      <ion-button size="small" color="primary" class="buttonLogin" (click)="login()">Login</ion-button>
-      <ion-button size="small" color="primary" class="buttonLogin" (click)="logoutUser()">Logout</ion-button>
-      <ion-button size="small" color="primary" class="buttonLogin" (click)="goRegister()">Sign In</ion-button>
+      <ion-button
+        size="small"
+        color="primary"
+        class="buttonLogin"
+        (click)="login()"
+        >Login</ion-button
+      >
+      <ion-button
+        size="small"
+        color="primary"
+        class="buttonLogin"
+        (click)="logout()"
+        >Logout</ion-button
+      >
+      <ion-button
+        size="small"
+        color="primary"
+        class="buttonLogin"
+        (click)="goRegister()"
+        >Sign In</ion-button
+      >
     </div>
   </ion-card>
+</ion-content>
+
+<ion-content *ngIf="!isAuthenticated">
+  <h2 class="text-dashboard">Welcome!</h2>
+  <ion-card class="card-dashboard-ticket" (click)="detailsTickets()">
+    My tickets
+  </ion-card>
+  <ion-button (click)="logout()">Logout</ion-button>
 </ion-content>

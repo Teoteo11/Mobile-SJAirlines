@@ -35,6 +35,10 @@ const routes: Routes = [
     path: "slider",
     loadChildren: () =>
       import("./slider/slider.module").then(m => m.SliderPageModule)
+  },
+  {
+    path: 'tickets-user',
+    loadChildren: () => import('./tickets-user/tickets-user.module').then( m => m.TicketsUserPageModule)
   }
 ];
 @NgModule({
