@@ -1,7 +1,8 @@
-import { LoginService } from "./../../services/login.service";
-import { NavController, ToastController } from "@ionic/angular";
 import { Component } from "@angular/core";
-import { LoginUs } from "src/interfaces";
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { NavController, ToastController } from "@ionic/angular";
+import { LoginUser, User } from 'src/interfaces';
+import { LoginService } from 'src/services/login.service';
 
 @Component({
   selector: "app-login",
@@ -9,44 +10,47 @@ import { LoginUs } from "src/interfaces";
   styleUrls: ["./login.page.scss"]
 })
 export class LoginPage {
+
   checkLog = false;
-  userLog: LoginUs = {
-    email: "",
-    password: ""
-  };
+
+  // ** Binded par
+  private loginUserData: LoginUser = {
+    email: '', 
+    password: ''
+  }
 
   constructor(
     public navCtrl: NavController,
     private loginService: LoginService,
     private toast: ToastController
-  ) {}
+  ) { }
 
   async goRegister() {
     await this.navCtrl.navigateForward("/register");
   }
 
-  isLoggedUser() {
-    this.loginService.loginUser(this.userLog).subscribe(
-      res => {
-        console.log(res);
-        localStorage.setItem("token", res.response);
-        this.loginToast(`Welcome ${this.userLog.email}`);
-        this.userLog.email = "";
-        this.userLog.password = "";
+  login() {
+
+    this.loginService.login(this.loginUserData).subscribe(
+      (res: HttpResponse<User>) => {
+        console.log(res.headers.get('Authorization'));
+        localStorage.setItem('auth-token', res.headers.get('Authorization'));
+        this.loginToast(`Welcome ${this.loginUserData.email}`);
+        this.clearUserModel();
         this.checkLog = true;
         this.navCtrl.navigateForward("/tabs/tab2");
       },
-      err => {
+      (err: HttpErrorResponse) => {
         this.loginToast("Invalid username or password");
         console.log(err);
       }
     );
   }
 
-  async logoutUser() {
+  logout() {
     if (this.checkLog === true) {
-      await this.loginService.logout();
-      this.loginToast(`Goodbye ${this.userLog.email}`);
+      this.loginToast(`Goodbye ${this.loginUserData.email}`);
+      this.loginService.logout();
       this.checkLog = false;
     } else {
       this.loginToast("Login needed");
@@ -61,5 +65,10 @@ export class LoginPage {
       position: "middle"
     });
     toast.present();
+  }
+
+  clearUserModel() {
+    this.loginUserData.email = '';
+    this.loginUserData.password = '';
   }
 }

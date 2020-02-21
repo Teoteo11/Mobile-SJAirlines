@@ -19,7 +19,7 @@ export interface User {
   tickets: Array<Ticket>;
 }
 
-export interface LoginUs {
+export interface LoginUser {
   email: string;
   password: string;
 }

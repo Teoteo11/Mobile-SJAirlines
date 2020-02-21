@@ -1,16 +1,15 @@
 import { NavController, ToastController } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "src/services/auth.service";
 import { User } from "./../../interfaces";
+import { RegistrationService } from 'src/services/registration.service';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: "app-register",
   templateUrl: "./register.page.html",
   styleUrls: ["./register.page.scss"]
 })
-export class RegisterPage implements OnInit {
-  // email: string;
-  // username: string;
-  // password: string;
+export class RegisterPage {
+
   public registerUserData: User = {
     username: "",
     password: "",
@@ -19,26 +18,27 @@ export class RegisterPage implements OnInit {
     email: "",
     tickets: []
   };
+
   constructor(
     private navCtrl: NavController,
-    private auth: AuthService,
+    private register: RegistrationService,
     private toastController: ToastController
   ) {}
-
-  ngOnInit() {}
 
   async backtoLogin() {
     await this.navCtrl.navigateBack("/tabs/login");
   }
+
   registerUser() {
-    this.auth.registerUser(this.registerUserData).subscribe(
-      res => {
-        console.log(res);
-        localStorage.setItem("token", res.response);
+    this.register.registerUser(this.registerUserData).subscribe(
+      (res: HttpResponse<User>) => {
+        localStorage.setItem("token", res.headers.get('Authorization'));
         this.presentToast("Registration confirmed");
         this.navCtrl.navigateForward("/tabs/login");
       },
-      err => console.log(err)
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
     );
   }
   async presentToast(message: string) {

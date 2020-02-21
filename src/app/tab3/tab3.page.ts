@@ -5,7 +5,6 @@ import { FlightsService } from "./../../services/flights.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavController } from "@ionic/angular";
-import { AuthService } from "src/services/auth.service";
 
 @Component({
   selector: "app-tab3",
@@ -20,7 +19,6 @@ export class Tab3Page implements OnInit {
     private activatedRoute: ActivatedRoute,
     private ticketService: TicketService,
     private flightsService: FlightsService,
-    private authService: AuthService,
     private airportService: AirportsService,
     private navCtrl: NavController
   ) {}

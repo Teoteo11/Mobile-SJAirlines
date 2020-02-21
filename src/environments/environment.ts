@@ -1,3 +1,5 @@
+import { HttpHeaders } from '@angular/common/http';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -5,7 +7,19 @@
 export const environment = {
   production: false,
 
-  SERVER_URL: 'https://api.sjairlines.tk/'
+  SERVER_URL: 'https://api.sjairlines.tk/',
+  LOCAL_URL: 'http://localhost:3004/',
+
+  HTTP_OPTIONS : {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': 'text/string',
+      'Access-Control-Allow-Header': 'text/string',
+      'Content-Type': 'application/json',
+      'Authorization': 'text/string'
+    }),
+    observe: 'response' as 'response'
+  }
+  
 };
 
 /*
