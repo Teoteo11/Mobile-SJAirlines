@@ -1,7 +1,16 @@
-ion-text {
-  color: #1698fa;
+ion-content {
+  --ion-background-color: #1698fa;
+}
+.home-card {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.title-card2 {
+  color: orange;
   text-align: center;
 }
+
 .title {
   text-align: center;
   color: orange;
@@ -9,7 +18,9 @@ ion-text {
 .titleCard {
   color: orange;
 }
-
+ion-toolbar {
+  --ion-background-color: #fff;
+}
 .footer {
   display: flex;
   flex-direction: row;

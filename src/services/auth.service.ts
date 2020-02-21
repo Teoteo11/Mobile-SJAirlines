@@ -17,11 +17,11 @@ export class AuthService {
     return this.httpClient.post<any>(`${this.authUrl}`, newUser);
   }
 
+  // public getUserByID(id: string) {
+  //   return this.httpClient.get<User>(`${this.authUrl}/${id}`);
+  // }
+
   public getToken() {
     return localStorage.getItem("token");
   }
-
-  // public loginUser(loginUser: LoginUs) {
-  //   return this.httpClient.post<any>(`${this.authUrl}/login`, loginUser);
-  // }
 }

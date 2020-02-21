@@ -1,20 +1,19 @@
-.title-login {
-  color: #fff;
-  text-align: center;
-  background-color: orange;
-  border-radius: 6px;
-  transform: translateY(22px);
-  width: 130px;
-  position: relative;
-  left: 85px;
-  z-index: 1;
+ion-content {
+  --ion-background-color: #1698fa;
 }
-
 .btn-signIn {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.title-register {
+  text-align: center;
+  color: orange;
+}
+
+.icon {
+  color: #fff;
 }
 
 .item-name,
@@ -29,13 +28,14 @@
 }
 
 .card-register {
-  height: 400px;
-  background-color: #1698fa;
-  margin-top: 10px;
+  margin-top: 18px;
+  height: 420px;
+  background-color: #fff;
+  border-radius: 6px;
 }
 
 .div-item {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;

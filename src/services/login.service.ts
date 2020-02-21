@@ -5,12 +5,12 @@ import { NavController, ToastController } from "@ionic/angular";
 import { LoginUs } from "src/interfaces";
 import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: "root"
-})
-export class LoginService {
 
-  private userID: string;
+@Injectable({ providedIn: "root" })
+export class LoginService {
+  
+  token: string;
+  decoded: any;
   private url = `${environment.SERVER_URL}login`;
 
   private httpOptions = {

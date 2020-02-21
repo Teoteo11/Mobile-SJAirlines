@@ -38,7 +38,7 @@ const routes: Routes = [
       //   ]
       // },
       {
-        path: "tab3/:departure/:destination",
+        path: "tab3",
         children: [
           {
             path: "",
