@@ -9,50 +9,63 @@
 <ion-content>
   <ion-card class="card">
     <ion-list>
-      <ion-item (click)="openModal()"
-        >{{airportSelectedDeparture?.city}} {{ airportSelectedDeparture?.name ||
-        'Departure' }}</ion-item
-      >
+      <ion-item (click)="openModal()">{{airportSelectedDeparture?.city}} {{ airportSelectedDeparture?.name || 'Departure' }}</ion-item>
     </ion-list>
   </ion-card>
+
   <ion-card class="card">
     <ion-list>
-      <ion-item (click)="openModal2()"
-        >{{airportSelectedDestination?.city}} {{
-        airportSelectedDestination?.name || 'Destination' }}</ion-item
-      >
+      <ion-item (click)="openModal2()">{{airportSelectedDestination?.city}} {{ airportSelectedDestination?.name || 'Destination' }}</ion-item>
     </ion-list>
   </ion-card>
-  <ion-card class="card">
-    <ion-list>
-      <ion-item>
+
+
+  <ion-row>
+    <ion-col>
+      <ion-card class="card">
+        <ion-list>
+          <ion-item>
+            <ion-label>Only one way</ion-label>
+            <ion-toggle [(ngModel)]="disabledWayBack"></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-evenly">
+
+    <ion-col size="6">
+      <ion-card class="card">
         <ion-label>One Way</ion-label>
-        <ion-toggle [(ngModel)]="disabledWayBack"></ion-toggle>
-        <ion-datetime
-          [(ngModel)]="checkIn"
-          displayFormat="DD MM YY"
-          placeholder="Select Date"
-        ></ion-datetime>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-  <ion-card *ngIf="!disabledWayBack" class="card">
-    <ion-list>
-      <ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-datetime [(ngModel)]="checkIn" displayFormat="DD MM YY" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-card *ngIf="!disabledWayBack" class="card">
         <ion-label>Way Back</ion-label>
-        <ion-datetime
-          [(ngModel)]="checkout"
-          displayFormat="DD MM YY"
-          placeholder="Select Date"
-        ></ion-datetime>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-datetime [(ngModel)]="checkout" displayFormat="DD MM YY" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+
+
+
+
+
   <ion-list>
     <div class="button-check">
-      <ion-button class="btn-color" (click)="launchTab3Page()"
-        >Check the flights</ion-button
-      >
+      <ion-button class="btn-color" (click)="launchTab3Page()">Check the flights</ion-button>
     </div>
   </ion-list>
 </ion-content>

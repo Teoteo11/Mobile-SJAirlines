@@ -7,6 +7,10 @@ import { HttpHeaders } from '@angular/common/http';
 export const environment = {
   production: false,
 
+  USER_LOGGED: false,
+  USER_ID: undefined,
+  // USER_AUTH_TOKEN: undefined,
+
   SERVER_URL: 'https://api.sjairlines.tk/',
   LOCAL_URL: 'http://localhost:3004/',
 
@@ -19,7 +23,6 @@ export const environment = {
     }),
     observe: 'response' as 'response'
   }
-  
 };
 
 /*

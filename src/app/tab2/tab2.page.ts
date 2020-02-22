@@ -1,12 +1,8 @@
+import { Component, OnInit } from "@angular/core";
+import { ModalController, NavController, ToastController } from "@ionic/angular";
 import { ModalPage } from "./../modal/modal.page";
-import { Component } from "@angular/core";
 import { Airport } from "src/interfaces";
-import {
-  ModalController,
-  NavController,
-  ToastController
-} from "@ionic/angular";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
+import { LoginService } from 'src/services/login.service';
 
 @Component({
   selector: "app-tab2",
@@ -14,16 +10,18 @@ import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
   styleUrls: ["tab2.page.scss"]
 })
 export class Tab2Page {
+
   airportSelectedDeparture: Airport;
   airportSelectedDestination: Airport;
   checkIn: Date;
   checkout: Date | string;
-  public disabledWayBack = false;
+  private disabledWayBack = false;
+
 
   constructor(
     public navCtrl: NavController,
     private modalController: ModalController,
-    private toastController: ToastController
+    private toastController: ToastController,
   ) {}
 
   async openModal() {
