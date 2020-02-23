@@ -1,5 +1,7 @@
 import { NavController } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
+import { BookingService } from 'src/services/booking.service';
+import { Ticket } from 'src/interfaces';
 
 @Component({
   selector: "app-tickets-user",
@@ -7,10 +9,19 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./tickets-user.page.scss"]
 })
 export class TicketsUserPage implements OnInit {
-  constructor(private navCtrl: NavController) {}
 
-  ngOnInit() {}
-  async backtoLogin() {
-    await this.navCtrl.navigateBack("/tabs/login");
+  private tickets: Ticket[];
+
+  constructor(
+    private navCtrl: NavController,
+    private bookingService: BookingService
+    ) {
+      let userID = localStorage.getItem('user-id') as string;
+      this.tickets = this.bookingService.getBookingsFromUserID(userID);
+    }
+
+  async ngOnInit() {
+    console.log('sono qui');
+    console.log(this.tickets);
   }
 }

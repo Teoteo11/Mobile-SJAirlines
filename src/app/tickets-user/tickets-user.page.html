@@ -1,12 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title class="title-tickets-page">My tickets</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="backtoLogin()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-card *ngFor='let t of tickets'>
+    <ion-card-content>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <p>t.departure</p>
+      <p>t.destination</p>
+      <p>t.duration</p>
+      <p>t.price</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

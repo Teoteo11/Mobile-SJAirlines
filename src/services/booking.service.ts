@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Flight, Ticket } from 'src/interfaces';
+import { environment } from 'src/environments/environment';
+import { TicketService } from './ticket.service';
+
+@Injectable({ providedIn: 'root' })
+export class BookingService {
+
+  private url = `${environment.SERVER_URL}users`;
+  private ticketsID: Ticket[] | null;
+  private tickets: Ticket[];
+
+  constructor(
+    private http: HttpClient,
+    private ticketService: TicketService
+    ) { }
+
+  getBookingsFromUserID(userID: string): Ticket[] {
+    this.http.get<Ticket[]>(`${this.url}/${userID}/tickets`, environment.HTTP_OPTIONS).subscribe(
+      (res: HttpResponse<Ticket[]>) => {
+        this.ticketsID = res.body;
+
+        this.tickets = this.ticketsID.map(ticket => {
+          return this.ticketService.getTicketById(ticket._id);
+        });
+      }
+    );
+
+    return this.tickets;
+  }
+
+  addTicket(userID: string) {
+    this.http.post<Ticket>(`${this.url}/${userID}/tickets`, environment.HTTP_OPTIONS).subscribe(
+    )
+  }
+}

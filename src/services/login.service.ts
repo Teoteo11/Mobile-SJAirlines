@@ -23,9 +23,14 @@ export class LoginService {
   public login(loginUserData: LoginUser) {
 
     this.http.post<User>(`${this.url}`, loginUserData, environment.HTTP_OPTIONS).subscribe(
-      (res: HttpResponse<any>) => {
+      (res: HttpResponse<User>) => {
+        
         localStorage.setItem('auth-token', res.headers.get('Authorization'));
-        localStorage.setItem('user-id', res.body);
+        localStorage.setItem('user-id', res.body._id);
+        localStorage.setItem('name', res.body.name);
+        localStorage.setItem('surname', res.body.surname);
+        localStorage.setItem('email', res.body.email);
+
         this.setUserLoggedIn();
         this.presentToast(strings.LOGIN_CORRECT);
         this.navController.navigateForward('/tabs/tab2');

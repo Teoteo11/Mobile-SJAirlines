@@ -7,18 +7,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="card">
-    <ion-list>
-      <ion-item (click)="openModal()">{{airportSelectedDeparture?.city}} {{ airportSelectedDeparture?.name || 'Departure' }}</ion-item>
-    </ion-list>
-  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-card class="card">
+        <ion-list>
+          <ion-item (click)="openModal()">{{airportSelectedDeparture?.city}} {{ airportSelectedDeparture?.name || 'Departure' }}</ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
-  <ion-card class="card">
-    <ion-list>
-      <ion-item (click)="openModal2()">{{airportSelectedDestination?.city}} {{ airportSelectedDestination?.name || 'Destination' }}</ion-item>
-    </ion-list>
-  </ion-card>
-
+  <ion-row>
+    <ion-col>
+      <ion-card class="card">
+        <ion-list>
+          <ion-item (click)="openModal2()">{{airportSelectedDestination?.city}} {{ airportSelectedDestination?.name || 'Destination' }}</ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
   <ion-row>
     <ion-col>
