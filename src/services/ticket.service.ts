@@ -28,13 +28,20 @@ export class TicketService {
     });
   }
 
-  public getTicketById(ticketID: string): Ticket {
-    let ticket: Ticket;
-    this.httpClient
-      .get<Ticket>(`${this.url}/${ticketID}`, environment.HTTP_OPTIONS)
-      .subscribe((res: HttpResponse<Ticket>) => {
-        ticket = res.body;
+  public getAllTicketsById(ticketID: string[]): Observable<Ticket> {
+    return new Observable(subscriber => {
+      ticketID.forEach(async element => {
+        const res: HttpResponse<Ticket> = await this.httpClient.get<Ticket>(`${this.url}/${element}`, environment.HTTP_OPTIONS).toPromise();
+        subscriber.next(res.body);
       });
-    return ticket;
+    });
+
+    // return this.httpClient.get<Ticket>(`${this.url}/${ticketID}`, environment.HTTP_OPTIONS);
+    
+    // .subscribe(
+    //   (res: HttpResponse<Ticket>) => {
+    //     ticket = res.body;
+    //   });
+    // return ticket;
   }
 }

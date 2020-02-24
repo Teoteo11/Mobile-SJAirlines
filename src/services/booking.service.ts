@@ -18,24 +18,18 @@ export class BookingService {
     private ticketService: TicketService
     ) {}
 
-  getBookingsFromUserID(userID: string): Observable<HttpResponse<Ticket[]>> {
-    return this.http.get<Ticket[]>(`${this.url}/${userID}/tickets`, environment.HTTP_OPTIONS)
-
-      // .subscribe((res: HttpResponse<Ticket[]>) => {
-      //   console.log(`%c I'm doing this request: ${this.url}/${userID}/tickets`, logger.info_message);
-      //   this.tickets = res.body;
-      //   // console.log(`Tickets: ${this.tickets}`);
-      // });
+  getTicketsIDFromUserID(userID: string): Observable<HttpResponse<string[]>> {
+    return this.http.get<string[]>(`${this.url}/${userID}/tickets`, environment.HTTP_OPTIONS);
   }
 
-  async getCompleteTicketFromArray(idTicket: string) {
-    this.http
-      .get<Ticket>(`${this.url}/tickets/${idTicket}`, environment.HTTP_OPTIONS)
-      .subscribe((res: HttpResponse<Ticket>) => {
-        this.completeTicket = res.body;
-      });
-    return this.completeTicket;
-    // TODO: una get di url/tickets/idTicket e mi torna il singolo biglietto
+  getCompleteTicketFromArray(idTicket: string): Observable<HttpResponse<Ticket>> {
+    return this.http.get<Ticket>(`${this.url}/tickets/${idTicket}`, environment.HTTP_OPTIONS);
+    
+    // .subscribe((res: HttpResponse<Ticket>) => {
+    //     this.completeTicket = res.body;
+    //   });
+    // return this.completeTicket;
+    // // TODO: una get di url/tickets/idTicket e mi torna il singolo biglietto
   }
 
   addTicket(userID: string) {
