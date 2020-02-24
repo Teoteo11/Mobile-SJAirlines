@@ -16,18 +16,16 @@ export class BookingService {
     private ticketService: TicketService
     ) { }
 
-  getBookingsFromUserID(userID: string): Ticket[] {
+  getBookingsFromUserID(userID: string) {
     this.http.get<Ticket[]>(`${this.url}/${userID}/tickets`, environment.HTTP_OPTIONS).subscribe(
       (res: HttpResponse<Ticket[]>) => {
         this.ticketsID = res.body;
-
-        this.tickets = this.ticketsID.map(ticket => {
-          return this.ticketService.getTicketById(ticket._id);
-        });
       }
     );
+  }
 
-    return this.tickets;
+  getAllTicketsFromArray() {
+    // TODO: 
   }
 
   addTicket(userID: string) {

@@ -43,6 +43,8 @@ export class LoginService {
   }
 
   public logout() {
+    // TODO: remove all data from storage
+    // TODO: set storage keys names in environment
     localStorage.removeItem('auth-token');
     localStorage.removeItem('user-id');
     this.setUserLoggedOut();

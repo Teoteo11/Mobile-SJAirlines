@@ -89,6 +89,7 @@ export class Tab3Page implements OnInit {
 
   buyTicket(flight: Flight) {
     if (this.ticketService.createTicket(flight)) {
+      // TODO: add selected ticket to tickets[] of the current user
       console.log("L'ho preso", flight);
     } else {
       console.log("E' successo  qualcosa");
