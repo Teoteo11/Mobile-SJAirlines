@@ -23,9 +23,14 @@
       </ion-item>
     </div>
     <div class="buttons">
-      <ion-button size="small" color="primary" class="buttonLogin" (click)="login()">Login</ion-button>
-      <ion-button size="small" color="primary" class="buttonLogin" (click)="logout()">Logout</ion-button>
-      <ion-button size="small" color="primary" class="buttonLogin" (click)="goRegister()">Sign In</ion-button>
+      <ion-row>
+        <ion-col>
+          <ion-button size="small" color="primary" class="buttonLogin" (click)="login()">Login</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button size="small" color="primary" class="buttonLogin" (click)="goRegister()">Sign In</ion-button>
+        </ion-col>
+      </ion-row>
     </div>
   </ion-card>
 </ion-content>

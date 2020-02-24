@@ -28,15 +28,28 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      if (this.isAuthenticated()) {
+        this.navCtrl.navigateForward('tabs/tab1');
+      }
+      else {
+        if (localStorage.getItem('slider') != 'done') {
+          this.launchTutorial();
+        }
+      }
     });
-    this.launchTutorial();
   }
 
   launchTutorial() {
-    // tslint:disable-next-line: triple-equals
-    if (localStorage.getItem("slider") != "done") {
-      this.navCtrl.navigateForward("slider");
-      localStorage.setItem("slider", "done");
-    }
+    localStorage.setItem('slider', 'done');
+    this.navCtrl.navigateForward('slider');
+
+    // if (localStorage.getItem("slider") != "done") {
+    //   this.navCtrl.navigateForward("slider");
+    //   localStorage.setItem("slider", "done");
+    // }
+  }
+
+  isAuthenticated() {
+    return localStorage.getItem('auth-token') != null;
   }
 }

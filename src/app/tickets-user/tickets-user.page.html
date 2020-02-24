@@ -7,14 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf='tickets != undefined'>
   <ion-card *ngFor="let t of tickets">
     <ion-card-content>
       <ion-icon name="pin" slot="start"></ion-icon>
-      <p>ID ticket: {{t._id}}</p>
-      <p>ID company: {{t.idCompany}}</p>
-      <p>ID flight: {{t.idFlight}}</p>
-      <p>Check: {{t.isChecked}}</p>
+      <!--
+        <p>ID ticket: {{t?._id | async}}</p>
+        <p>ID company: {{t?.idCompany}}</p>
+        <p>ID flight: {{t?.idFlight}}</p>
+        <p>Check: {{t?.isChecked}}</p>
+      -->
+
+
     </ion-card-content>
   </ion-card>
 </ion-content>

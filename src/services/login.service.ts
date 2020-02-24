@@ -47,6 +47,9 @@ export class LoginService {
     // TODO: set storage keys names in environment
     localStorage.removeItem('auth-token');
     localStorage.removeItem('user-id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('surname');
+    localStorage.removeItem('email');
     this.setUserLoggedOut();
     this.navController.navigateBack(['/']);
   }
