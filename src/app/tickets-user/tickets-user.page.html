@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor='let t of tickets'>
+  <ion-card *ngFor="let t of tickets">
     <ion-card-content>
       <ion-icon name="pin" slot="start"></ion-icon>
-      <p>t.departure</p>
-      <p>t.destination</p>
-      <p>t.duration</p>
-      <p>t.price</p>
+      <p>ID ticket: {{t._id}}</p>
+      <p>ID company: {{t.idCompany}}</p>
+      <p>ID flight: {{t.idFlight}}</p>
+      <p>Check: {{t.isChecked}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

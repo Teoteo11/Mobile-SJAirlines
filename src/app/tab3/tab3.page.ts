@@ -1,3 +1,4 @@
+import { BookingService } from "src/services/booking.service";
 import { TicketService } from "./../../services/ticket.service";
 import { AirportsService } from "src/services/airport.service";
 import { Flight, Airport, User, Ticket } from "src/interfaces";
@@ -14,12 +15,13 @@ import { NavController } from "@ionic/angular";
 export class Tab3Page implements OnInit {
   flights: Array<Flight> = [];
   flight: Flight;
-  idUser: User;
+  idUser: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private ticketService: TicketService,
     private flightsService: FlightsService,
     private airportService: AirportsService,
+    private bookingService: BookingService,
     private navCtrl: NavController
   ) {}
 
@@ -89,6 +91,9 @@ export class Tab3Page implements OnInit {
 
   buyTicket(flight: Flight) {
     if (this.ticketService.createTicket(flight)) {
+      this.idUser = localStorage.getItem("user-id");
+      this.bookingService.addTicket(this.idUser);
+      console.log("ID user:", this.idUser);
       // TODO: add selected ticket to tickets[] of the current user
       console.log("L'ho preso", flight);
     } else {
