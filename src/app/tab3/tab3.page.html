@@ -26,18 +26,18 @@
           <ion-icon name="alarm" md="md-alarm"></ion-icon>Duration:
         </h3>
         {{flight?.duration}}min
-        <h3 class="text-flight"><ion-icon name="logo-usd"></ion-icon>Price:</h3>
-        {{flight?.price}}$
+        <h3 class="text-flight">
+          <ion-icon name="logo-usd"></ion-icon>Price:</h3>
+        <p>
+          {{flight?.price}}$
+        </p>
         <h3 class="text-flight">
           <ion-icon name="logo-usd"></ion-icon>IdAirplane:
         </h3>
         {{flight?.idAirplane}}
       </ion-text>
     </ion-card-content>
-    <ion-button
-      (click)="launchDetail(flight.departure,flight.destination,flight.duration,flight.price,flight.idAirplane)"
-      >Show details</ion-button
-    >
+    <ion-button (click)="launchDetail(flight.departure,flight.destination,flight.duration,flight.price,flight.idAirplane)">Show details</ion-button>
     <ion-button (click)="buyTicket(flight)">Buy</ion-button>
   </ion-card>
 </ion-content>

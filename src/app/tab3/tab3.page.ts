@@ -5,7 +5,8 @@ import { Flight, Airport, User, Ticket } from "src/interfaces";
 import { FlightsService } from "./../../services/flights.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { NavController } from "@ionic/angular";
+import { NavController, ToastController } from "@ionic/angular";
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: "app-tab3",
@@ -13,16 +14,19 @@ import { NavController } from "@ionic/angular";
   styleUrls: ["tab3.page.scss"]
 })
 export class Tab3Page implements OnInit {
+  
   flights: Array<Flight> = [];
   flight: Flight;
   idUser: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private ticketService: TicketService,
     private flightsService: FlightsService,
     private airportService: AirportsService,
     private bookingService: BookingService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private toastCtrl: ToastController
   ) {}
 
   async ngOnInit() {
@@ -89,15 +93,43 @@ export class Tab3Page implements OnInit {
     );
   }
 
-  buyTicket(flight: Flight) {
-    if (this.ticketService.createTicket(flight)) {
-      this.idUser = localStorage.getItem("user-id");
-      this.bookingService.addTicket(this.idUser);
-      console.log("ID user:", this.idUser);
-      // TODO: add selected ticket to tickets[] of the current user
-      console.log("L'ho preso", flight);
+  async buyTicket(flight: Flight) {
+    
+    const userID = localStorage.getItem('user-id');
+    const flightID = flight._id;
+
+    if (userID && flightID != null){
+      this.ticketService.addTicket(userID, flightID).toPromise()
+      .then( async () => {
+        const toast = await this.toastCtrl.create({
+          message: 'Biglietto aggiunto.',
+          duration: 1000,
+          keyboardClose: true,
+          position: 'bottom'
+        });
+
+        toast.present();
+      })
+      .catch();
     } else {
-      console.log("E' successo  qualcosa");
+      const toast = await this.toastCtrl.create({
+        message: 'Qualcosa è andato storto, riprova.',
+        duration: 1000,
+        keyboardClose: true,
+        position: 'bottom'
+      });
+
+      toast.present();
     }
+
+    // if (this.ticketService.createTicket(flight)) {
+    //   this.idUser = localStorage.getItem("user-id");
+    //   this.bookingService.addTicket(this.idUser);
+    //   console.log("ID user:", this.idUser);
+    //   // TODO: add selected ticket to tickets[] of the current user
+    //   console.log("L'ho preso", flight);
+    // } else {
+    //   console.log("E' successo  qualcosa");
+    // }
   }
 }
